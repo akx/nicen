@@ -1,5 +1,6 @@
 *.log
 *.py[cod]
+.env
 .idea
 .vscode
 node_modules

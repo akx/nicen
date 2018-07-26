@@ -1,0 +1,55 @@
+openapi: 3.0.0
+paths:
+  /:
+    post:
+      summary: Reformat code
+      description: ''
+      operationId: reformat
+      responses:
+        '400':
+          description: Invalid input
+          schema: '#/components/schemas/Error'
+        '200':
+          description: Reformatted code
+          schema: '#/components/schemas/ReformatResponse'
+
+        
+      requestBody:
+        $ref: '#/components/requestBodies/ReformatBody'
+components:
+  schemas:
+    ReformatRequest:
+      type: object
+      properties:
+        width:
+          type: integer
+          format: int64
+          default: 120
+        language:
+          type: string
+        content:
+          type: string
+    ReformatResponse:
+      type: object
+      properties:
+        content:
+          type: string
+        language:
+          type: string
+        handler:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+  requestBodies:
+    ReformatBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReformatRequest'
+        application/x-www-form-urlencoded:
+          schema:
+            $ref: '#/components/schemas/ReformatRequest'
+      required: true
