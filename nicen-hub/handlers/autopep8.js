@@ -3,10 +3,10 @@ const consultLanguageServer = require('../util/consultLanguageServer');
 
 module.exports = {
   language: 'python',
-  name: 'black',
+  name: 'autopep8',
   async process({content, width}) {
     return await consultLanguageServer(
-      `${NICEN_PY_URL}black`,
+      `${NICEN_PY_URL}autopep8`,
       content,
       {width},
     );

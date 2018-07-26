@@ -3,7 +3,6 @@ const body = require('body-parser');
 const multer = require('multer');
 
 const config = require('./config');
-const handlers = require('./handlers');
 
 const app = express();
 
