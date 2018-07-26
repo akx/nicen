@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "prettier": "^1.13.7",
+    "strip-ansi": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  },
+  "scripts": {
+    "dev": "nodemon index.js"
+  }
+}
