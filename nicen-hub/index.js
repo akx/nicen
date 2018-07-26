@@ -10,6 +10,7 @@ app.use(body.json());
 app.use(body.urlencoded({extended: true}));
 app.use(multer().array());
 app.use('/', express.static('public', {index: 'index.html'}));
+app.use('/', express.static('spec'));
 app.get('/handlers', (req, res) => {
   const handlers = require('./handlers').map((h0) => {
     const h = {...h0};

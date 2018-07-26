@@ -12,6 +12,7 @@ ADD . /app
 RUN cd /app/nicen-py && pip install --no-cache --quiet -r requirements.txt
 RUN cd /app/nicen-hub && yarn --silent --non-interactive --production && yarn cache clean
 RUN cd /app/nicen-js && yarn --silent --non-interactive --production && yarn cache clean
+RUN cd /app/frontend && yarn --silent --non-interactive --production && yarn build --out-dir=../nicen-hub/public && rm -rf node_modules && yarn cache clean
 WORKDIR /app
 CMD circusd ./circus.ini
 ENV NICEN_PORT 8042

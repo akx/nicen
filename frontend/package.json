@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mithril": "^1.1.6",
+    "poi": "^10.2.9"
+  },
+  "scripts": {
+    "dev": "poi --no-clear-console",
+    "build": "poi build --no-clear-console"
+  }
+}
