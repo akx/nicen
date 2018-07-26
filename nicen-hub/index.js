@@ -1,8 +1,8 @@
-require('dotenv').config();
 const express = require('express');
 const body = require('body-parser');
 const multer = require('multer');
 
+const config = require('./config');
 const handlers = require('./handlers');
 
 const app = express();
@@ -21,9 +21,7 @@ app.get('/handlers', (req, res) => {
 });
 app.post('/', require('./process'));
 
-const host = process.env.NICEN_HOST || '0.0.0.0';
-const port = parseInt(process.env.NICEN_PORT || '8042', 10);
-app.listen(port, host, (err) => {
+app.listen(config.NICEN_PORT, config.NICEN_HOST, (err) => {
   if (err) throw err;
-  console.log(`listening on ${host}:${port}`);
+  console.log(`listening on ${config.NICEN_HOST}:${config.NICEN_PORT}`);
 })

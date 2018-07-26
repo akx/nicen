@@ -30,23 +30,4 @@ function pipe(process, argv, stdin) {
   });
 }
 
-
-const handlers = [
-  {
-    language: 'python',
-    name: 'black',
-    async process({content, width}) {
-      const resp = await pipe('/usr/bin/env', ['black', '-l', width, '-'], content);
-      if(resp.code != 0) {
-        return {
-          error: resp.stderr.toString(),
-        };
-      }
-      return {
-        content: resp.stdout.toString(),
-      };
-    }
-  },
-];
-
-module.exports = handlers;
+module.exports = pipe;
