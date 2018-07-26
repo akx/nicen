@@ -1,32 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
 body {
-    margin: 1em;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-body, input, select, textarea, button {
-    font: 10pt "Open Sans", sans-serif;
+a {
+    color: #188075
 }
 
-select,
-textarea {
+* {
+    font: 10pt "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+nav {
+    background: #87BDB1;
+    border-bottom: 3px solid #68B3AF;
+}
+
+nav img {
+    height: 50px;
+    padding: 10px;
+    margin: auto;
     display: block;
-    width: 100%;
 }
 
-textarea {
-    height: 400px;
+footer {
+    border-top: 1px solid #87BDB1;
+    background: #AACCB1;
+    padding: 10px;
 }
 
-td {
-    width: 50%;
-    padding: 1em;
-    vertical-align: top;
+main {
+    flex: 1;
+    display: flex;
 }
 
-#output.error {
-    color: orangered;
+#input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#input select {
+    display: block;
+    height: 2.5em;
+    border-radius: 0;
+}
+
+#input textarea {
+    display: block;
+    flex: 1;
+    border: none;
+}
+
+button {
+    display: block;
+    height: 2.5em;
+    background: #C3DBB4;
+    border-bottom: 4px solid #AACCB1;
+}
+
+
+#input [type=submit]:active {
+    border-bottom-width: 2px;
+    outline: none;
+}
+
+#output {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+#message {
+    padding: 0.5em;
+    background: #9ed9cb;
+}
+
+#output.error #message {
+    background: orangered;
+    color: #fff;
 }
 
 #code {
     font-family: monospace;
     white-space: pre;
+    overflow: scroll;
+    max-width: 100%;
+    display: block;
+    flex: 1;
 }
