@@ -7,6 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nicen</title>
     <style>
+        body {
+            margin: 1em;
+        }
+        body, input, select, textarea, button {
+            font: 10pt "Open Sans", sans-serif;
+        }
         select,
         textarea {
             display: block;
@@ -26,7 +32,7 @@
         #output.error {
             color: orangered;
         }
-        #output.success {
+        #code {
             font-family: monospace;
             white-space: pre;
         }
@@ -42,7 +48,9 @@
                     const out = document.getElementById('output');
                     out.classList.toggle('error', !!data.error);
                     out.classList.toggle('success', !!data.content);
-                    out.innerText = data.error || data.content;
+                    document.getElementById('code').innerText = data.content || '';
+                    delete data.content;
+                    document.getElementById('message').innerText = data.error || JSON.stringify(data);
                 })
         }
     </script>
@@ -66,6 +74,8 @@ print(dict((k, list(map(str.strip, v))) for k,v in movies.items()))
                 </form>
             </td>
             <td id="output">
+                <div id="message"></div>
+                <div id="code"></div>
 
             </td>
         </tr>

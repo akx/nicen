@@ -12,8 +12,6 @@ paths:
         '200':
           description: Reformatted code
           schema: '#/components/schemas/ReformatResponse'
-
-        
       requestBody:
         $ref: '#/components/requestBodies/ReformatBody'
 components:
@@ -25,10 +23,14 @@ components:
           type: integer
           format: int64
           default: 120
+        handler:
+          type: string
         language:
           type: string
+          required: true
         content:
           type: string
+          required: true
     ReformatResponse:
       type: object
       properties:

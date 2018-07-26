@@ -4,7 +4,6 @@ const body = require('body-parser');
 const multer = require('multer');
 
 const handlers = require('./handlers');
-const process = require('./process');
 
 const app = express();
 
@@ -12,7 +11,15 @@ app.use(body.json());
 app.use(body.urlencoded({extended: true}));
 app.use(multer().array());
 app.use('/', express.static('public', {index: 'index.html'}));
-app.post('/', process);
+app.get('/handlers', (req, res) => {
+  const handlers = require('./handlers').map((h0) => {
+    const h = {...h0};
+    delete h.process;
+    return h;
+  });
+  res.json(handlers);
+});
+app.post('/', require('./process'));
 
 const host = process.env.HOST || '0.0.0.0';
 const port = parseInt(process.env.PORT || '8042', 10);
