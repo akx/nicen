@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:10.7.0
 # h/t https://hub.docker.com/r/frolvlad/alpine-python3/~/dockerfile/
-RUN apk add --no-cache python3 py3-zmq py3-psutil && \
+RUN apk add --no-cache python3 py3-zmq py3-psutil clang && \
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
     pip3 install --upgrade pip setuptools wheel && \

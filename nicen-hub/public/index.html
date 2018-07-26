@@ -65,10 +65,11 @@
                 <form method="post" onsubmit="post(this);return false">
                     <select name="language">
                         <option value="python">Python</option>
+                        <option value="c">C</option>
                     </select>
                     <textarea name="content">
 movies = {"title":["Mission: Impossible - Fallout"], "genres":["Action", "Adventure", "Thriller"], 'storyline':[' \n  Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong.    \n ']}
-print(dict((k, list(map(str.strip, v))) for k,v in movies.items()))            
+print(dict((k, list(map(str.strip, v))) for k,v in movies.items()))
         </textarea>
                     <input type="submit" value="nicen">
                 </form>
