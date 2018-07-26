@@ -21,8 +21,8 @@ app.get('/handlers', (req, res) => {
 });
 app.post('/', require('./process'));
 
-const host = process.env.HOST || '0.0.0.0';
-const port = parseInt(process.env.PORT || '8042', 10);
+const host = process.env.NICEN_HOST || '0.0.0.0';
+const port = parseInt(process.env.NICEN_PORT || '8042', 10);
 app.listen(port, host, (err) => {
   if (err) throw err;
   console.log(`listening on ${host}:${port}`);
