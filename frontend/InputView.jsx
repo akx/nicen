@@ -40,9 +40,10 @@ const InputView = ({ code, language, width, onSubmit, onChange }) => (
           value={language}
           onChange={event => onChange('language', event.target.value)}
         >
-          <option value="python">Python</option>
           <option value="c">C</option>
+          <option value="css">CSS</option>
           <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
         </select>
       </ControlLabel>
       <ControlLabel>

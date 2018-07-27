@@ -1,12 +1,12 @@
 const request = require('request-promise-native');
 
-const consultLanguageServer = async function (url, content, { width }) {
+const consultLanguageServer = async function (url, content, { width, qs }) {
   let resp;
   try {
     resp = await request({
       method: 'post',
       uri: url,
-      qs: { width },
+      qs: { ...(qs || {}), width },
       body: content,
       headers: {
         'Content-type': 'text/plain',

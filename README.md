@@ -5,9 +5,10 @@ Nicen is an (attempt at) an API-first omniglot pretty-printer.
 
 Currently supported languages are
 
-* Python (Black and Autopep8)
 * C (clang-format)
+* CSS (Prettier)
 * JavaScript (Prettier)
+* Python (Black and Autopep8)
 
 Structure
 ---------
