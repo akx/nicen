@@ -4,10 +4,28 @@ import logoSvg from '../assets/logo.svg';
 import InputView from './InputView';
 import OutputView from './OutputView';
 
+// via https://wiki.python.org/moin/SimplePrograms
 const EXAMPLE_PYTHON = `
-movies = {"title":["Mission: Impossible - Fallout"], "genres":["Action", "Adventure", "Thriller"], 'storyline':['
-\\n  Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong.    \\n ']}
-print(dict((k, list(map(str.strip, v))) for k,v in movies.items()))
+BOARD_SIZE=8
+class BailOut(Exception):
+  pass
+def validate(queens):
+  left=right=col=queens[-1]
+  for r in reversed(  queens[:-1]  ):
+       left,right = (left-1,right+1)
+       if r in(left, col, right):raise BailOut
+def add_queen(queens):
+    for i in range(BOARD_SIZE):
+      test_queens=queens+[i]
+      try:
+        validate(test_queens)
+        if len(test_queens) == BOARD_SIZE: return test_queens
+        else: return add_queen(test_queens)
+      except BailOut: pass
+    raise BailOut
+
+queens = add_queen([]);
+print(queens);print("\\n".join(". "*q + "Q " + ". "*(BOARD_SIZE-q-1) for q in queens))
 `;
 
 export default class App extends React.Component {
