@@ -49,10 +49,20 @@ main {
     flex-direction: column;
 }
 
-#input select {
+#controls {
+    display: flex;
+
+}
+
+#controls select {
     display: block;
     height: 2.5em;
     border-radius: 0;
+    flex: 4;
+}
+
+#controls input[type=number] {
+    flex: 1;
 }
 
 #input textarea {

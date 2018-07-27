@@ -8,6 +8,7 @@ function post() {
     body: JSON.stringify({
       language: state.language,
       content: state.content,
+      width: state.width,
     }),
     headers: {
       'content-type': 'application/json',
@@ -22,6 +23,7 @@ function post() {
 
 const state = {
   language: 'python',
+  width: 120,
   content: `
 movies = {"title":["Mission: Impossible - Fallout"], "genres":["Action", "Adventure", "Thriller"], 'storyline':[' \\n  Ethan Hunt and his IMF team, along with some familiar allies, race against time after a mission gone wrong.    \\n ']}
 print(dict((k, list(map(str.strip, v))) for k,v in movies.items()))
@@ -58,13 +60,18 @@ const inputView = () => (
     event.preventDefault();
     return false;
   }}>
-    <select name="language" value={state.language} onchange={(event) => {
-      state.language = event.target.value;
-    }}>
-      <option value="python">Python</option>
-      <option value="c">C</option>
-      <option value="javascript">JavaScript</option>
-    </select>
+    <div id="controls">
+      <select name="language" value={state.language} onchange={(event) => {
+        state.language = event.target.value;
+      }}>
+        <option value="python">Python</option>
+        <option value="c">C</option>
+        <option value="javascript">JavaScript</option>
+      </select>
+      <input type="number" title="print width" name="width" value={state.width} min={0} onchange={(event) => {
+        state.width = 0 | event.target.valueAsNumber;
+      }} />
+    </div>
     <textarea name="content" oninput={(event) => {
       state.content = event.target.value;
     }}>{state.content}</textarea>
