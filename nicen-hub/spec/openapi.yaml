@@ -1,4 +1,8 @@
 openapi: 3.0.0
+info:
+  version: 0.1.0
+  title: Nicen
+  description: A source code formatter
 paths:
   /:
     post:
@@ -40,6 +44,8 @@ components:
           type: string
         handler:
           type: string
+        time:
+          type: integer
     Error:
       type: object
       properties:
