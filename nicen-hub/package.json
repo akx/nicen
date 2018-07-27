@@ -12,5 +12,6 @@
   },
   "scripts": {
     "dev": "nodemon index.js"
-  }
+  },
+  "license": "MIT"
 }

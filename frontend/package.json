@@ -6,5 +6,6 @@
   "scripts": {
     "dev": "poi --no-clear-console",
     "build": "poi build --no-clear-console"
-  }
+  },
+  "license": "MIT"
 }
