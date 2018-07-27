@@ -18,7 +18,7 @@ designed to be run as a monolithic Docker container.
 The services are 
 
 * `nicen-hub`: the actual user-facing API server (Node.js + Express)
-* `nicen-frontend`: an SPA served by the hub (Poi + Mithril.js)
+* `nicen-frontend`: an SPA served by the hub (Poi + React)
 * `nicen-py`: a language server to deal with Python-based pretty-printers (Python + Flask)
 * `nicen-js`: a language server to deal with JavaScript-based pretty-printers (Node.js + Express)
 

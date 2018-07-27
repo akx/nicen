@@ -1,111 +1,84 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
-    color: #188075
+  color: #188075;
 }
 
 * {
-    font: 10pt "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font: 10pt "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 nav {
-    background: #87BDB1;
-    border-bottom: 3px solid #68B3AF;
+  background: #87bdb1;
+  border-bottom: 3px solid #68b3af;
+  height: 35px;
 }
 
 nav img {
-    height: 50px;
-    padding: 10px;
-    margin: auto;
-    display: block;
+  height: 40px;
+  display: block;
+  pointer-events: none;
+  transform: rotate(-4deg) translateY(-3px);
 }
 
 footer {
-    border-top: 1px solid #87BDB1;
-    background: #AACCB1;
-    padding: 10px;
+  border-top: 1px solid #87bdb1;
+  background: #aaccb1;
+  padding: 10px;
 }
 
 main {
-    flex: 1;
-    display: flex;
-}
-
-#input {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-#controls {
-    display: flex;
-
-}
-
-#controls select {
-    display: block;
-    height: 2.5em;
-    border-radius: 0;
-    flex: 4;
-}
-
-#controls input[type=number] {
-    flex: 1;
-}
-
-#input textarea {
-    display: block;
-    flex: 1;
-    border: none;
+  flex: 1;
+  display: flex;
 }
 
 button {
-    display: block;
-    height: 2.5em;
-    background: #C3DBB4;
-    border-bottom: 4px solid #AACCB1;
+  display: block;
+  height: 2.5em;
+  background: #c3dbb4;
+  border-bottom: 4px solid #aaccb1;
 }
 
-
-#input [type=submit]:active {
-    border-bottom-width: 2px;
-    outline: none;
+button:active {
+  border-bottom-width: 2px;
+  outline: none;
 }
 
 #output {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 #message {
-    padding: 0.5em;
-    background: #9ed9cb;
+  padding: 0.5em;
+  background: #9ed9cb;
 }
 
 #output.error #message {
-    background: orangered;
-    color: #fff;
+  background: orangered;
+  color: #fff;
 }
 
 #code {
-    font-family: monospace;
-    white-space: pre;
-    overflow: scroll;
-    max-width: 100%;
-    display: block;
-    flex: 1;
+  font-family: fira code, menlo, monospace;
+  white-space: pre;
+  overflow: scroll;
+  max-width: 100%;
+  display: block;
+  flex: 1;
 }

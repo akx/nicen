@@ -1,13 +1,10 @@
 module.exports = {
   html: {
-    title: 'Nicen'
+    title: 'Nicen',
   },
   devServer: {
     proxy: {
-      '/': 'http://localhost:8042'
+      '/': 'http://localhost:8042',
     },
   },
-  babel: {
-    jsx: 'm',
-  }
 };
