@@ -8,11 +8,24 @@ RUN apk add --no-cache python3 py3-zmq py3-psutil clang && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     rm -r /root/.cache
 RUN pip install --no-cache circus
-ADD . /app
+
+# Python
+
+ADD ./nicen-py /app/nicen-py
 RUN cd /app/nicen-py && pip install --no-cache --quiet -r requirements.txt
-RUN cd /app/nicen-hub && yarn --silent --non-interactive --production && yarn cache clean
+
+# Javascript
+
+ADD ./nicen-js /app/nicen-js
 RUN cd /app/nicen-js && yarn --silent --non-interactive --production && yarn cache clean
-RUN cd /app/frontend && yarn --silent --non-interactive --production && yarn build --out-dir=../nicen-hub/public && rm -rf node_modules && yarn cache clean
+
+# Hub and frontend
+
+ADD ./nicen-hub /app/nicen-hub
+RUN cd /app/nicen-hub && yarn --silent --non-interactive --production && yarn cache clean
+ADD . /app
+RUN cd /app/frontend && yarn --silent --non-interactive && yarn build --out-dir=../nicen-hub/public && rm -rf node_modules && yarn cache clean
+
 WORKDIR /app
 CMD circusd ./circus.ini
 ENV NICEN_PORT 8042

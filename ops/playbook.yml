@@ -44,6 +44,7 @@
     docker_image:
       path: /root/nicen
       name: nicen
+      force: true
   - name: start nicen docker image
     docker_container:
       image: nicen
