@@ -1,0 +1,59 @@
+- hosts: nicen
+  tasks:
+  - name: add apt keys
+    apt_key:
+      url: "{{ item }}"
+    with_items:
+      - https://download.docker.com/linux/ubuntu/gpg
+      - http://nginx.org/keys/nginx_signing.key
+  - name: add apt repos
+    apt_repository:
+      repo: "{{ item }}"
+    with_items:
+      - 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'
+      - 'deb [arch=amd64] http://ppa.launchpad.net/hlandau/rhea/ubuntu xenial main'
+      - 'deb http://nginx.org/packages/mainline/ubuntu/ bionic nginx'
+  - name: install OS packages
+    apt:
+      name: "{{ item }}"
+      state: present
+      update_cache: yes
+    with_items:
+      - acmetool
+      - docker-ce
+      - fail2ban
+      - git
+      - nginx
+      - python3
+      - python3-docker
+  - name: generate dhparam
+    shell: openssl dhparam -out /etc/ssl/dhparam.pem 2048
+    args:
+      creates: /etc/ssl/dhparam.pem
+  - name: configure nginx
+    template:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+    notify:
+     - restart nginx
+  - name: clone nicen
+    git:
+      repo: https://github.com/akx/nicen.git
+      dest: /root/nicen
+  - name: build nicen docker image
+    docker_image:
+      path: /root/nicen
+      name: nicen
+  - name: start nicen docker image
+    docker_container:
+      image: nicen
+      recreate: true
+      restart: true
+      name: nicen
+      published_ports:
+        - 127.0.0.1:8042:8042
+  handlers:
+    - name: restart nginx
+      systemd:
+        name: nginx
+        state: restarted
