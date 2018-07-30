@@ -46,12 +46,13 @@ const HandlerListItem = styled('li')({
 });
 
 const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
-
   <InputViewForm method="post" onSubmit={onSubmit}>
     <Flex auto>
       <Controls>
         <Flex>
-          <Flex auto style={{ padding: '.5em' }}>Width</Flex>
+          <Flex auto style={{ padding: '.5em' }}>
+            Width
+          </Flex>
           <input
             type="number"
             title="print width"
@@ -63,7 +64,7 @@ const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
           />
         </Flex>
         <HandlersList>
-          {handlers.map((h) => (
+          {handlers.map(h => (
             <HandlerListItem
               key={h.name}
               className={handler && h.name === handler.name ? 'active' : ''}
@@ -76,7 +77,7 @@ const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
           ))}
         </HandlersList>
       </Controls>
-      <Editor code={code} onChange={(newCode) => onChange('code', newCode)} handler={handler} />
+      <Editor code={code} onChange={newCode => onChange('code', newCode)} handler={handler} />
     </Flex>
     <button type="submit">Nicen my code!</button>
   </InputViewForm>

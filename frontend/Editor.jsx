@@ -22,7 +22,6 @@ function getCodeMirrorModeForHandler(handler) {
   return undefined;
 }
 
-
 const codeMirrorCss = css({
   display: 'block',
   flex: 1,

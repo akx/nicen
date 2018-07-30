@@ -80,7 +80,6 @@ fn main() { 'outer: loop {
 }
 `;
 
-
 export default {
   c: EXAMPLE_C,
   javascript: EXAMPLE_JAVASCRIPT,

@@ -5,7 +5,6 @@ import InputView from './InputView';
 import OutputView from './OutputView';
 import examples from './examples';
 
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -21,20 +20,20 @@ export default class App extends React.Component {
 
   componentDidMount() {
     fetch('/handlers', { method: 'GET' })
-      .then((res) => res.json())
-      .then((handlers) => {
+      .then(res => res.json())
+      .then(handlers => {
         this.setState({ handlers }, () => {
           const handler = handlers.find(h => h.name === 'black' && h.language === 'python');
           this.onChange('handler', handler);
         });
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
         alert('Failed to load handler list. Try again soon.');
       });
   }
 
-  post = (event) => {
+  post = event => {
     const { content, handler, width } = this.state;
     fetch('/', {
       method: 'POST',
@@ -92,15 +91,7 @@ export default class App extends React.Component {
             onSubmit={this.post}
             onChange={this.onChange}
           />
-          {
-            result
-              ? (
-                <OutputView
-                  result={result}
-                  handler={handler}
-                />
-              ) : null
-          }
+          {result ? <OutputView result={result} handler={handler} /> : null}
         </main>
         <footer>
           An <a href="https://akx.github.io/">@akx</a> joint. &middot;&nbsp;
