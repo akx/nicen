@@ -27,5 +27,5 @@ app.post('/prettier', (req, res) => {
 
 app.listen(config.NICEN_JS_PORT, config.NICEN_JS_HOST, (err) => {
   if (err) throw err;
-  console.log(`listening on ${config.NICEN_JS_HOST}:${config.NICEN_JS_PORT}`);
+  console.log(`[nicen-js] listening on ${config.NICEN_JS_HOST}:${config.NICEN_JS_PORT}`);
 });

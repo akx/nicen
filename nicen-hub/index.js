@@ -23,5 +23,5 @@ app.post('/', require('./process'));
 
 app.listen(config.NICEN_PORT, config.NICEN_HOST, (err) => {
   if (err) throw err;
-  console.log(`listening on ${config.NICEN_HOST}:${config.NICEN_PORT}`);
+  console.log(`[nicen-hub] listening on ${config.NICEN_HOST}:${config.NICEN_PORT}`);
 })
