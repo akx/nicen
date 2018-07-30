@@ -25,7 +25,6 @@ function getCodeMirrorModeForHandler(handler) {
 const codeMirrorCss = css({
   display: 'block',
   flex: 1,
-  border: '1px solid gainsboro',
   position: 'relative',
   '.CodeMirror': {
     fontFamily: 'fira code, menlo, monospace',

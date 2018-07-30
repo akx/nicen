@@ -37,11 +37,11 @@ const HandlerListItem = styled('li')({
     opacity: 0.75,
   },
   '&.active': {
-    background: 'gainsboro',
+    background: 'rgba(255, 255, 255, 0.1)',
   },
   ':hover': {
-    background: 'gainsboro',
-    color: '#2d4d4a',
+    background: 'rgba(255, 255, 255, 0.1)',
+    color: '#87bdb1',
   },
 });
 

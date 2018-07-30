@@ -11,6 +11,9 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  background: #3a3c3a;
+  color: #c8e1de
+
 }
 
 a {
@@ -19,12 +22,20 @@ a {
 
 body, input, select, button {
   font: 10pt "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #c8e1de
+}
+
+input {
+  background: none;
+  border: 1px solid #68b3af;
+
 }
 
 nav {
   background: #87bdb1;
   border-bottom: 3px solid #68b3af;
   height: 35px;
+  color: #111;
 }
 
 nav img {
@@ -45,9 +56,10 @@ main {
 
 button {
   display: block;
-  height: 2.5em;
+  height: 4.5em;
   background: #c3dbb4;
   border-bottom: 4px solid #aaccb1;
+  color: #111;
 }
 
 button:active {
