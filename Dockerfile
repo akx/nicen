@@ -22,7 +22,7 @@ RUN cd /app/nicen-hub && yarn --silent --non-interactive --production && yarn ca
 
 ADD ./frontend /app/frontend
 ADD ./assets /app/assets
-RUN cd /app/frontend && yarn --silent --non-interactive && yarn build --out-dir=../nicen-hub/public && rm -rf node_modules && yarn cache clean
+RUN cd /app/frontend && yarn --silent --non-interactive --production && yarn build --out-dir=../nicen-hub/public && rm -rf node_modules && yarn cache clean
 
 # Configuration and all the rest
 
