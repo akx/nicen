@@ -48,9 +48,9 @@ def blacken(code, width):
 def autopep8ify(code, width):
     return autopep8.fix_code(code)
 
-
-app.run(
-    host=env.str('NICEN_PY_HOST', default='0.0.0.0'),
-    port=env.int('NICEN_PY_PORT', default='42080'),
-    debug=env.bool('DEBUG', default=False),
-)
+if __name__ == '__main__':
+    app.run(
+        host=env.str('NICEN_PY_HOST', default='0.0.0.0'),
+        port=env.int('NICEN_PY_PORT', default='42080'),
+        debug=env.bool('DEBUG', default=False),
+    )

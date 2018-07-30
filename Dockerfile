@@ -1,7 +1,7 @@
 FROM base/archlinux:2018.07.01
 RUN pacman -Sy --noconfirm nodejs rust python3 clang yarn python-pip
-RUN pip3 install --no-cache circus
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+RUN pip3 install --no-cache circus gunicorn
 
 # Python
 
@@ -13,14 +13,22 @@ RUN cd /app/nicen-py && pip3 install --no-cache --quiet -r requirements.txt
 ADD ./nicen-js /app/nicen-js
 RUN cd /app/nicen-js && yarn --silent --non-interactive --production && yarn cache clean
 
-# Hub and frontend
+# Hub
 
 ADD ./nicen-hub /app/nicen-hub
 RUN cd /app/nicen-hub && yarn --silent --non-interactive --production && yarn cache clean
-ADD . /app
+
+# Frontend
+
+ADD ./frontend /app/frontend
+ADD ./assets /app/assets
 RUN cd /app/frontend && yarn --silent --non-interactive && yarn build --out-dir=../nicen-hub/public && rm -rf node_modules && yarn cache clean
 
+# Configuration and all the rest
+
+ADD . /app
 WORKDIR /app
 CMD circusd ./circus.ini
 ENV NICEN_PORT 8042
+ENV NICEN_PY_PORT 42080
 EXPOSE ${NICEN_PORT}
