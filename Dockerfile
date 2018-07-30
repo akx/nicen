@@ -1,18 +1,12 @@
-FROM mhart/alpine-node:10.7.0
-# h/t https://hub.docker.com/r/frolvlad/alpine-python3/~/dockerfile/
-RUN apk add --no-cache python3 py3-zmq py3-psutil clang && \
-    python3 -m ensurepip && \
-    rm -r /usr/lib/python*/ensurepip && \
-    pip3 install --upgrade pip setuptools wheel && \
-    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
-    if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
-    rm -r /root/.cache
-RUN pip install --no-cache circus
+FROM base/archlinux:2018.07.01
+RUN pacman -Sy --noconfirm nodejs rust python3 clang yarn python-pip
+RUN pip3 install --no-cache circus
+ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 
 # Python
 
 ADD ./nicen-py /app/nicen-py
-RUN cd /app/nicen-py && pip install --no-cache --quiet -r requirements.txt
+RUN cd /app/nicen-py && pip3 install --no-cache --quiet -r requirements.txt
 
 # Javascript
 
