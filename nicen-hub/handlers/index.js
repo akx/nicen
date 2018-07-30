@@ -5,6 +5,7 @@ const handlers = flatten([
   require('./autopep8'),
   require('./clang-format'),
   require('./prettier'),
+  require('./rustfmt'),
 ]);
 
 module.exports = handlers;

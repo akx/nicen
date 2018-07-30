@@ -44,6 +44,7 @@ const InputView = ({ code, language, width, onSubmit, onChange }) => (
           <option value="css">CSS</option>
           <option value="javascript">JavaScript</option>
           <option value="python">Python</option>
+          <option value="rust">Rust</option>
         </select>
       </ControlLabel>
       <ControlLabel>

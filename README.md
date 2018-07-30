@@ -9,6 +9,7 @@ Currently supported languages are
 * CSS (Prettier)
 * JavaScript (Prettier)
 * Python (Black and Autopep8)
+* Rust (rustfmt)
 
 Structure
 ---------
