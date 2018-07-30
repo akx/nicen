@@ -81,6 +81,11 @@ export default class App extends React.Component {
       <React.Fragment>
         <nav>
           <img src={logoSvg} alt="Nicen" />
+          <div className="about">
+            An <a href="https://akx.github.io/">@akx</a> joint. &middot;&nbsp;
+            <a href="/openapi.yaml">OpenAPI Spec</a>
+            &nbsp;&middot;&nbsp;<a href="https://github.com/akx/nicen">Source code</a>
+          </div>
         </nav>
         <main>
           <InputView
@@ -93,11 +98,6 @@ export default class App extends React.Component {
           />
           {result ? <OutputView result={result} handler={handler} /> : null}
         </main>
-        <footer>
-          An <a href="https://akx.github.io/">@akx</a> joint. &middot;&nbsp;
-          <a href="/openapi.yaml">OpenAPI Spec</a>
-          &nbsp;&middot;&nbsp;<a href="https://github.com/akx/nicen">Source code</a>
-        </footer>
       </React.Fragment>
     );
   }

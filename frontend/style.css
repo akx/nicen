@@ -29,15 +29,13 @@ nav {
 
 nav img {
   height: 40px;
-  display: block;
   pointer-events: none;
   transform: rotate(-4deg) translateY(-3px);
 }
 
-footer {
-  border-top: 1px solid #87bdb1;
-  background: #aaccb1;
-  padding: 10px;
+nav .about {
+  float: right;
+  padding: .5em;
 }
 
 main {
