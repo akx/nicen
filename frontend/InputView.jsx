@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Flex } from 'reflexbox';
+import Editor from './Editor';
+
 
 const InputViewForm = styled('form')({
   flex: 1,
@@ -12,14 +14,6 @@ const Controls = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   minWidth: '12em',
-});
-
-const CodeTextarea = styled('textarea')({
-  display: 'block',
-  flex: 1,
-  border: '1px solid gainsboro',
-  boxShadow: 'inset gainsboro 0px 5px 5px -3px',
-  fontFamily: 'fira code, menlo, monospace',
 });
 
 const HandlersList = styled('ul')({
@@ -82,7 +76,7 @@ const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
           ))}
         </HandlersList>
       </Controls>
-      <CodeTextarea name="content" value={code} onChange={event => onChange('code', event.target.value)} />
+      <Editor code={code} onChange={(newCode) => onChange('code', newCode)} handler={handler} />
     </Flex>
     <button type="submit">Nicen my code!</button>
   </InputViewForm>

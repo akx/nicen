@@ -92,7 +92,15 @@ export default class App extends React.Component {
             onSubmit={this.post}
             onChange={this.onChange}
           />
-          {result ? <OutputView result={result} /> : null}
+          {
+            result
+              ? (
+                <OutputView
+                  result={result}
+                  handler={handler}
+                />
+              ) : null
+          }
         </main>
         <footer>
           An <a href="https://akx.github.io/">@akx</a> joint. &middot;&nbsp;

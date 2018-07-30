@@ -1,9 +1,11 @@
 {
   "dependencies": {
     "@babel/core": ">=7.0.0-beta.50",
+    "codemirror": "^5.39.2",
     "emotion": "^9.2.6",
     "poi": "^10.2.9",
     "react": "^16.4.1",
+    "react-codemirror2": "^5.1.0",
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.6",
     "reflexbox": "^3.0.1"

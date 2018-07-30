@@ -1,6 +1,7 @@
 import React from 'react';
+import Editor from './Editor';
 
-const OutputView = ({ result }) => {
+const OutputView = ({ result, handler }) => {
   const className = [];
   let message;
   if (result) {
@@ -17,7 +18,7 @@ const OutputView = ({ result }) => {
   return (
     <section id="output" className={className.join(' ')}>
       <div id="message">{message}</div>
-      <textarea id="code" readOnly value={result.content} />
+      <Editor code={result.content} handler={handler} />
     </section>
   );
 };
