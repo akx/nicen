@@ -72,7 +72,7 @@ const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
           {handlers.map((h) => (
             <HandlerListItem
               key={h.name}
-              className={h.name === handler.name ? 'active' : ''}
+              className={handler && h.name === handler.name ? 'active' : ''}
               tabIndex={0}
               onClick={() => onChange('handler', h)}
             >
