@@ -5,7 +5,8 @@
     "poi": "^10.2.9",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-emotion": "^9.2.6"
+    "react-emotion": "^9.2.6",
+    "reflexbox": "^3.0.1"
   },
   "scripts": {
     "build": "poi build --no-clear-console",

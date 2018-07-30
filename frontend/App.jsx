@@ -32,20 +32,35 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      language: 'python',
+      handler: null,
       width: 120,
       content: EXAMPLE_PYTHON,
       result: null,
+      handlers: null,
     };
   }
 
+  componentDidMount() {
+    fetch('/handlers', { method: 'GET' })
+      .then((res) => res.json())
+      .then((handlers) => {
+        const handler = handlers.find(h => h.name === 'black' && h.language === 'python');
+        this.setState({ handlers, handler });
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('Failed to load handler list. Try again soon.');
+      });
+  }
+
   post = (event) => {
-    const { language, content, width } = this.state;
+    const { content, handler, width } = this.state;
     fetch('/', {
       method: 'POST',
       body: JSON.stringify({
-        language,
         content,
+        handler: handler.name,
+        language: handler.language,
         width,
       }),
       headers: {
@@ -68,15 +83,16 @@ export default class App extends React.Component {
       case 'width':
         this.setState({ width: value });
         break;
-      case 'language':
-        this.setState({ language: value });
+      case 'handler':
+        this.setState({ handler: value });
         break;
       default:
     }
   };
 
   render() {
-    const { language, content, width, result } = this.state;
+    const { handler, content, width, result, handlers } = this.state;
+    if (handlers === null) return null;
     return (
       <React.Fragment>
         <nav>
@@ -84,8 +100,9 @@ export default class App extends React.Component {
         </nav>
         <main>
           <InputView
+            handlers={handlers}
             code={content}
-            language={language}
+            handler={handler}
             width={width}
             onSubmit={this.post}
             onChange={this.onChange}
@@ -93,9 +110,8 @@ export default class App extends React.Component {
           {result ? <OutputView result={result} /> : null}
         </main>
         <footer>
-          An <a href="https://akx.github.io/">@akx</a> joint. &middot;&nbsp;<a href="/openapi.yaml">
-            OpenAPI Spec
-          </a>
+          An <a href="https://akx.github.io/">@akx</a> joint. &middot;&nbsp;
+          <a href="/openapi.yaml">OpenAPI Spec</a>
           &nbsp;&middot;&nbsp;<a href="https://github.com/akx/nicen">Source code</a>
         </footer>
       </React.Fragment>

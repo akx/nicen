@@ -1,16 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
-
-const ControlLabel = styled('label')({
-  flex: 1,
-  display: 'flex',
-  span: {
-    padding: '.5em',
-  },
-  'input, select': {
-    flex: 1,
-  },
-});
+import { Flex } from 'reflexbox';
 
 const InputViewForm = styled('form')({
   flex: 1,
@@ -20,6 +10,8 @@ const InputViewForm = styled('form')({
 
 const Controls = styled('div')({
   display: 'flex',
+  flexDirection: 'column',
+  minWidth: '12em',
 });
 
 const CodeTextarea = styled('textarea')({
@@ -30,37 +22,68 @@ const CodeTextarea = styled('textarea')({
   fontFamily: 'fira code, menlo, monospace',
 });
 
-const InputView = ({ code, language, width, onSubmit, onChange }) => (
+const HandlersList = styled('ul')({
+  listStyleType: 'none',
+  padding: 0,
+  margin: 0,
+  flex: 1,
+});
+
+const HandlerListItem = styled('li')({
+  padding: '.5em',
+  margin: 0,
+  cursor: 'pointer',
+  overflowY: 'auto',
+  '.name': {
+    display: 'block',
+    fontWeight: 'bold',
+  },
+  '.language': {
+    display: 'block',
+    opacity: 0.75,
+  },
+  '&.active': {
+    background: 'gainsboro',
+  },
+  ':hover': {
+    background: 'gainsboro',
+    color: '#2d4d4a',
+  },
+});
+
+const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
+
   <InputViewForm method="post" onSubmit={onSubmit}>
-    <Controls>
-      <ControlLabel>
-        <span>Language</span>
-        <select
-          name="language"
-          value={language}
-          onChange={event => onChange('language', event.target.value)}
-        >
-          <option value="c">C</option>
-          <option value="css">CSS</option>
-          <option value="javascript">JavaScript</option>
-          <option value="python">Python</option>
-          <option value="rust">Rust</option>
-        </select>
-      </ControlLabel>
-      <ControlLabel>
-        <span>Width</span>
-        <input
-          type="number"
-          title="print width"
-          name="width"
-          value={width}
-          min={0}
-          style={{ width: '5em' }}
-          onChange={event => onChange('width', parseInt(event.target.value, 10))}
-        />
-      </ControlLabel>
-    </Controls>
-    <CodeTextarea name="content" value={code} onChange={event => onChange('code', event.target.value)} />
+    <Flex auto>
+      <Controls>
+        <Flex>
+          <Flex auto style={{ padding: '.5em' }}>Width</Flex>
+          <input
+            type="number"
+            title="print width"
+            name="width"
+            value={width}
+            min={0}
+            style={{ width: '5em' }}
+            onChange={event => onChange('width', parseInt(event.target.value, 10))}
+          />
+        </Flex>
+        <HandlersList>
+          {handlers.map((h) => (
+            <HandlerListItem
+              key={h.name}
+              className={h.name === handler.name ? 'active' : ''}
+              tabIndex={0}
+              onClick={() => onChange('handler', h)}
+            >
+              <span className="name">{h.name}</span>
+              <span className="language">{h.language}</span>
+            </HandlerListItem>
+          ))}
+        </HandlersList>
+      </Controls>
+      <CodeTextarea name="content" value={code} onChange={event => onChange('code', event.target.value)} />
+    </Flex>
     <button type="submit">Nicen my code!</button>
   </InputViewForm>
 );
