@@ -1,39 +1,32 @@
 const { NICEN_JS_URL } = require('../config');
 const consultLanguageServer = require('../util/consultLanguageServer');
 
+const consultPrettierServer = (content, width, options = {}) => (
+  consultLanguageServer(
+    `${NICEN_JS_URL}prettier`,
+    content,
+    { width, ...options },
+  )
+);
+
+const prettierMode = (language) => (
+  {
+    language,
+    name: `prettier-${language}`,
+    process: ({ content, width }) => consultPrettierServer(content, width, { qs: { parser: language } }),
+  }
+);
+
 module.exports = [
   {
     language: 'javascript',
     name: 'prettier-js',
-    async process({ content, width }) {
-      return await consultLanguageServer(
-        `${NICEN_JS_URL}prettier`,
-        content,
-        { width },
-      );
-    }
+    process: ({ content, width }) => consultPrettierServer(content, width),
   },
-  {
-    language: 'css',
-    name: 'prettier-css',
-    async process({ content, width }) {
-      return await consultLanguageServer(
-        `${NICEN_JS_URL}prettier`,
-        content,
-        { width, qs: { parser: 'css' } },
-      );
-    }
-  },
-
-  {
-    language: 'php',
-    name: 'prettier-php',
-    async process({ content, width }) {
-      return await consultLanguageServer(
-        `${NICEN_JS_URL}prettier`,
-        content,
-        { width, qs: { parser: 'php' } },
-      );
-    }
-  },
+  prettierMode('css'),
+  prettierMode('php'),
+  prettierMode('typescript'),
+  prettierMode('graphql'),
+  prettierMode('markdown'),
+  prettierMode('json'),
 ];

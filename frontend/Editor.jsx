@@ -6,7 +6,8 @@ import React from 'react';
 
 require('codemirror/mode/clike/clike');
 require('codemirror/mode/css/css');
-require('codemirror/mode/javascript/javascript');
+require('codemirror/mode/jsx/jsx');
+require('codemirror/mode/markdown/markdown');
 require('codemirror/mode/php/php');
 require('codemirror/mode/python/python');
 require('codemirror/mode/rust/rust');
@@ -15,7 +16,12 @@ function getCodeMirrorModeForHandler(handler) {
   if (handler) {
     switch (handler.language) {
       case 'c':
+      case 'graphql': // At least we get colored braces
         return 'clike';
+      case 'javascript':
+      case 'json':
+      case 'typescript':
+        return 'jsx';
       default:
         return handler.language;
     }

@@ -87,11 +87,36 @@ array_map(function($arg1,$arg2) use ( $var1, $var2 ) {
 }, array("complex"=>"code","with"=>"inconsistent","formatting"=>"is", "hard" => "to", "maintain"=>true));
 `;
 
+const EXAMPLE_MARKDOWN = `
+  # hello world
+    
+  this is an example
+    
+  * foo
+    * bar
+`;
+
+const EXAMPLE_JSON = `{"ugly":"json","var":[1,2,3,4,5,'foo']}`;
+
+// via https://blog.risingstack.com/graphql-overview-getting-started-with-graphql-and-nodejs/
+const EXAMPLE_GRAPHQL = `{
+  user(id: 1  ) {
+    name age
+    friends {name            image
+      age
+      
+    }
+  }
+}`;
+
 export default {
   c: EXAMPLE_C,
   css: EXAMPLE_CSS,
   javascript: EXAMPLE_JAVASCRIPT,
+  json: EXAMPLE_JSON,
+  markdown: EXAMPLE_MARKDOWN,
   php: EXAMPLE_PHP,
   python: EXAMPLE_PYTHON,
   rust: EXAMPLE_RUST,
+  graphql: EXAMPLE_GRAPHQL,
 };
