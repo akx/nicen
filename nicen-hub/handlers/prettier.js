@@ -20,7 +20,19 @@ module.exports = [
       return await consultLanguageServer(
         `${NICEN_JS_URL}prettier`,
         content,
-        { width, qs: { parser: 'postcss' } },
+        { width, qs: { parser: 'css' } },
+      );
+    }
+  },
+
+  {
+    language: 'php',
+    name: 'prettier-php',
+    async process({ content, width }) {
+      return await consultLanguageServer(
+        `${NICEN_JS_URL}prettier`,
+        content,
+        { width, qs: { parser: 'php' } },
       );
     }
   },

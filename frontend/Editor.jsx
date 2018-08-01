@@ -7,6 +7,7 @@ import React from 'react';
 require('codemirror/mode/clike/clike');
 require('codemirror/mode/css/css');
 require('codemirror/mode/javascript/javascript');
+require('codemirror/mode/php/php');
 require('codemirror/mode/python/python');
 require('codemirror/mode/rust/rust');
 

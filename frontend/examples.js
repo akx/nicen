@@ -80,10 +80,18 @@ fn main() { 'outer: loop {
 }
 `;
 
+// via https://github.com/prettier/plugin-php
+const EXAMPLE_PHP = `
+array_map(function($arg1,$arg2) use ( $var1, $var2 ) {
+    return $arg1+$arg2/($var+$var2);
+}, array("complex"=>"code","with"=>"inconsistent","formatting"=>"is", "hard" => "to", "maintain"=>true));
+`;
+
 export default {
   c: EXAMPLE_C,
-  javascript: EXAMPLE_JAVASCRIPT,
-  python: EXAMPLE_PYTHON,
   css: EXAMPLE_CSS,
+  javascript: EXAMPLE_JAVASCRIPT,
+  php: EXAMPLE_PHP,
+  python: EXAMPLE_PYTHON,
   rust: EXAMPLE_RUST,
 };
