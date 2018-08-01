@@ -82,6 +82,7 @@ fn main() { 'outer: loop {
 
 // via https://github.com/prettier/plugin-php
 const EXAMPLE_PHP = `
+<?php
 array_map(function($arg1,$arg2) use ( $var1, $var2 ) {
     return $arg1+$arg2/($var+$var2);
 }, array("complex"=>"code","with"=>"inconsistent","formatting"=>"is", "hard" => "to", "maintain"=>true));
@@ -96,7 +97,7 @@ const EXAMPLE_MARKDOWN = `
     * bar
 `;
 
-const EXAMPLE_JSON = `{"ugly":"json","var":[1,2,3,4,5,'foo']}`;
+const EXAMPLE_JSON = '{"ugly":"json","var":[1,2,3,4,5,\'foo\']}';
 
 // via https://blog.risingstack.com/graphql-overview-getting-started-with-graphql-and-nodejs/
 const EXAMPLE_GRAPHQL = `{
@@ -109,14 +110,20 @@ const EXAMPLE_GRAPHQL = `{
   }
 }`;
 
+const EXAMPLE_TYPESCRIPT = `
+interface X<V>{i: number,o:{i:any,p:V}};;;
+type XN = X<number>; class Foo{private static y: XN;}
+`;
+
 export default {
   c: EXAMPLE_C,
   css: EXAMPLE_CSS,
+  graphql: EXAMPLE_GRAPHQL,
   javascript: EXAMPLE_JAVASCRIPT,
   json: EXAMPLE_JSON,
   markdown: EXAMPLE_MARKDOWN,
   php: EXAMPLE_PHP,
   python: EXAMPLE_PYTHON,
   rust: EXAMPLE_RUST,
-  graphql: EXAMPLE_GRAPHQL,
+  typescript: EXAMPLE_TYPESCRIPT,
 };
