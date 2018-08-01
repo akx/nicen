@@ -58,7 +58,7 @@ export default class App extends React.Component {
   onChange = (prop, value) => {
     switch (prop) {
       case 'code':
-        this.setState({ content: value, hasCustomContent: true });
+        this.setState({ content: value, hasCustomContent: (value.trim() !== '') });
         break;
       case 'width':
         this.setState({ width: value });
