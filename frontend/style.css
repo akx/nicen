@@ -20,7 +20,7 @@ a {
   color: #188075;
 }
 
-body, input, select, button {
+body, input, select, button, textarea {
   font: 10pt "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: #c8e1de
 }
