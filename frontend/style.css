@@ -66,29 +66,3 @@ button:active {
   border-bottom-width: 2px;
   outline: none;
 }
-
-#output {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-#message {
-  padding: 0.5em;
-  background: #9ed9cb;
-}
-
-#output.error #message {
-  background: orangered;
-  color: #fff;
-}
-
-#code {
-  font-family: fira code, menlo, monospace;
-  white-space: pre;
-  overflow: scroll;
-  max-width: 100%;
-  display: block;
-  flex: 1;
-}
