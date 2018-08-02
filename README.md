@@ -7,9 +7,15 @@ Currently supported languages are
 
 * C (clang-format)
 * CSS (Prettier)
+* GraphQL (Prettier)
 * JavaScript (Prettier)
+* JSON (Prettier)
+* Markdown (Prettier)
+* PHP (Prettier)
 * Python (Black and Autopep8)
 * Rust (rustfmt)
+* SQL (sql-formatter)
+* TypeScript (Prettier)
 
 Structure
 ---------
