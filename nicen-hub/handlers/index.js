@@ -6,6 +6,7 @@ const handlers = flatten([
   require('./clang-format'),
   require('./prettier'),
   require('./rustfmt'),
+  require('./sql-formatter'),
 ]);
 
 module.exports = handlers;

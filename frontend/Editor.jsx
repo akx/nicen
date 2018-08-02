@@ -11,6 +11,7 @@ require('codemirror/mode/markdown/markdown');
 require('codemirror/mode/php/php');
 require('codemirror/mode/python/python');
 require('codemirror/mode/rust/rust');
+require('codemirror/mode/sql/sql');
 
 function getCodeMirrorModeForHandler(handler) {
   if (handler) {

@@ -1,8 +1,9 @@
-const express = require('express');
 const body = require('body-parser');
+const express = require('express');
 const prettier = require('prettier');
-const util = require('util');
+const sqlFormatter = require('sql-formatter');
 const stripAnsi = require('strip-ansi');
+const util = require('util');
 
 
 const config = require('../nicen-hub/config');
@@ -22,6 +23,16 @@ app.post('/prettier', (req, res) => {
     res.status(200).send(formatted);
   } catch (err) {
     res.status(400).send(stripAnsi(err.toString()));
+  }
+});
+
+app.post('/sql-formatter', (req, res) => {
+  const code = req.body;
+  try {
+    const formatted = sqlFormatter.format(code);
+    res.status(200).send(formatted);
+  } catch (err) {
+    res.status(400).send(err.toString());
   }
 });
 
