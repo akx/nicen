@@ -4,6 +4,7 @@ import black
 import autopep8
 import time
 import functools
+import textwrap
 
 env = Env()
 env.read_envfile()
@@ -18,6 +19,7 @@ def as_formatter(func):
         code = request.get_data().decode('utf-8')
         t0 = time.perf_counter()
         try:
+            code = textwrap.dedent(code)
             code = func(code, width=width)
         except Exception as exc:
             return (str(exc), 400)
