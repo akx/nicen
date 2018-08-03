@@ -6,6 +6,7 @@ Nicen is an (attempt at) an API-first omniglot pretty-printer.
 Currently supported languages are
 
 * C (clang-format)
+* C# (Roslyn)
 * CSS (Prettier)
 * GraphQL (Prettier)
 * JavaScript (Prettier)
