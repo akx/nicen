@@ -1,2 +1,5 @@
 **/node_modules
+.git
 Dockerfile
+nicen-dotnet/bin
+nicen-dotnet/obj

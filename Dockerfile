@@ -1,5 +1,11 @@
+FROM base/archlinux:2018.07.01 as dotnetbuild
+RUN pacman -Sy --noconfirm dotnet-sdk
+
+ADD ./nicen-dotnet /app/nicen-dotnet
+RUN cd /app/nicen-dotnet && dotnet restore && dotnet build && dotnet publish -o /app/nicen-dotnet-built
+
 FROM base/archlinux:2018.07.01
-RUN pacman -Sy --noconfirm nodejs rust python3 clang yarn python-pip
+RUN pacman -Sy --noconfirm nodejs rust python3 clang yarn python-pip dotnet-runtime
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 RUN pip3 install --no-cache circus gunicorn
 
@@ -12,6 +18,11 @@ RUN cd /app/nicen-py && pip3 install --no-cache --quiet -r requirements.txt
 
 ADD ./nicen-js /app/nicen-js
 RUN cd /app/nicen-js && yarn --silent --non-interactive --production && yarn cache clean
+
+# .NET
+
+ADD ./nicen-dotnet /app/nicen-dotnet
+COPY --from=dotnetbuild /app/nicen-dotnet-built /app/nicen-dotnet-built
 
 # Hub
 
