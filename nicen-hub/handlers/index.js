@@ -7,6 +7,7 @@ const handlers = flatten([
   require('./prettier'),
   require('./rustfmt'),
   require('./sql-formatter'),
+  require('./dotnet'),
 ]);
 
 module.exports = handlers;

@@ -124,8 +124,17 @@ Iy, MAX(I) AS I FROM Z GROUP BY Iy, Ix ORDER BY Iy, Ix ) SELECT array_to_string(
 ' .,,,-----++++%%%%@@@@#### ', GREATEST(I,1), 1 ) ),'' ) FROM Zt GROUP BY Iy ORDER BY Iy;
 `;
 
+const EXAMPLE_CSHARP = `public class Customer 
+{public Name Name {get;set;}
+void foo() {
+for(;;){Console   .WriteLine   ("hello",x:"bar");
+}
+}
+}`;
+
 export default {
   c: EXAMPLE_C,
+  csharp: EXAMPLE_CSHARP,
   css: EXAMPLE_CSS,
   graphql: EXAMPLE_GRAPHQL,
   javascript: EXAMPLE_JAVASCRIPT,

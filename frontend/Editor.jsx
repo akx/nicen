@@ -12,6 +12,7 @@ function getCodeMirrorModeForHandler(handler) {
   if (handler) {
     switch (handler.language) {
       case 'c':
+      case 'csharp':
       case 'graphql': // At least we get colored braces
         return 'clike';
       case 'javascript':
