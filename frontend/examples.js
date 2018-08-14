@@ -132,6 +132,11 @@ for(;;){Console   .WriteLine   ("hello",x:"bar");
 }
 }`;
 
+const EXAMPLE_XML = `
+<note><to>Tove</to><from              email="jani@example.com">Jani</from><heading>Reminder
+</heading><body>Don't forget me this weekend!</body>
+</note>`;
+
 export default {
   c: EXAMPLE_C,
   csharp: EXAMPLE_CSHARP,
@@ -145,4 +150,5 @@ export default {
   rust: EXAMPLE_RUST,
   sql: EXAMPLE_SQL,
   typescript: EXAMPLE_TYPESCRIPT,
+  xml: EXAMPLE_XML,
 };

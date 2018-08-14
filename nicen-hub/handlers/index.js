@@ -8,6 +8,7 @@ const handlers = flatten([
   require('./rustfmt'),
   require('./sql-formatter'),
   require('./dotnet'),
+  require('./xmllint'),
 ]);
 
 module.exports = handlers;

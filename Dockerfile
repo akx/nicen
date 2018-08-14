@@ -5,7 +5,7 @@ ADD ./nicen-dotnet /app/nicen-dotnet
 RUN cd /app/nicen-dotnet && dotnet restore && dotnet build && dotnet publish -o /app/nicen-dotnet-built
 
 FROM base/archlinux:2018.07.01
-RUN pacman -Sy --noconfirm nodejs rust python3 clang yarn python-pip dotnet-runtime
+RUN pacman -Sy --noconfirm nodejs rust python3 clang yarn python-pip dotnet-runtime libxml2
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 RUN pip3 install --no-cache circus gunicorn
 

@@ -17,6 +17,7 @@ Currently supported languages are
 * Rust (rustfmt)
 * SQL (sql-formatter)
 * TypeScript (Prettier)
+* XML (xmllint)
 
 Structure
 ---------
