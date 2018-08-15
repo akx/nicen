@@ -11,5 +11,5 @@ upgrading nicen
 ---------------
 
 ```
-ansible-playbook -i inventory.txt playbook.yml --start-at-task "clone nicen"
+ansible-playbook -i inventory.txt playbook.yml --tags nicen
 ```

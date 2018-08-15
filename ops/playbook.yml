@@ -36,16 +36,20 @@
       dest: /etc/nginx/nginx.conf
     notify:
      - restart nginx
+    tags: [nginx]
   - name: clone nicen
+    tags: [nicen]
     git:
       repo: https://github.com/akx/nicen.git
       dest: /root/nicen
   - name: build nicen docker image
+    tags: [nicen]
     docker_image:
       path: /root/nicen
       name: nicen
       force: true
   - name: start nicen docker image
+    tags: [nicen]
     docker_container:
       image: nicen
       recreate: true
