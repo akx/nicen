@@ -21,6 +21,7 @@ const HandlersList = styled('ul')({
   padding: 0,
   margin: 0,
   flex: 1,
+  overflowY: 'auto',
 });
 
 const HandlerListItem = styled('li')({
