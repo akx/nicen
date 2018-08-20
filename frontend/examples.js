@@ -137,11 +137,19 @@ const EXAMPLE_XML = `
 </heading><body>Don't forget me this weekend!</body>
 </note>`;
 
+const EXAMPLE_HTML = `
+<ul>
+<li>hello
+<li>world
+</ul>
+`;
+
 export default {
   c: EXAMPLE_C,
   csharp: EXAMPLE_CSHARP,
   css: EXAMPLE_CSS,
   graphql: EXAMPLE_GRAPHQL,
+  html: EXAMPLE_HTML,
   javascript: EXAMPLE_JAVASCRIPT,
   json: EXAMPLE_JSON,
   markdown: EXAMPLE_MARKDOWN,

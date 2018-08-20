@@ -9,6 +9,7 @@ Currently supported languages are
 * C# (Roslyn)
 * CSS (Prettier)
 * GraphQL (Prettier)
+* HTML (BeautifulSoup4/html5lib)
 * JavaScript (Prettier)
 * JSON (Prettier)
 * Markdown (Prettier)

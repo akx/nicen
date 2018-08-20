@@ -1,4 +1,6 @@
 autopep8
+beautifulsoup4
 black
 envparse
 flask
+html5lib

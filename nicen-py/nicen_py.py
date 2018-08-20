@@ -1,15 +1,23 @@
+import traceback
+
+from bs4.element import MinimalHTMLFormatter
 from envparse import Env
-from flask import Flask, Response, request, jsonify
+from flask import Flask, Response, request
 import black
 import autopep8
 import time
 import functools
 import textwrap
+import bs4
 
 env = Env()
 env.read_envfile()
 
 app = Flask(__name__)
+
+
+class MinimalHTML5Formatter(MinimalHTMLFormatter):
+    void_element_close_prefix = None
 
 
 def as_formatter(func):
@@ -22,6 +30,7 @@ def as_formatter(func):
             code = textwrap.dedent(code)
             code = func(code, width=width)
         except Exception as exc:
+            traceback.print_exc()
             return (str(exc), 400)
         resp = Response(code.encode('UTF-8'))
         resp.headers['Content-type'] = 'text/python; charset=utf-8'
@@ -49,6 +58,20 @@ def blacken(code, width):
 @as_formatter
 def autopep8ify(code, width):
     return autopep8.fix_code(code)
+
+
+@app.route('/bs4', methods=['POST'])
+@as_formatter
+def bs4ify(code, width):
+    soup = bs4.BeautifulSoup(code, 'html5lib')
+    # If the input document did not smell like a full HTML document, only
+    # output the body; `html5lib` will otherwise insist on having all the
+    # accoutrements.
+    if not any(p in code.lower() for p in ('<html', '<head', '<body')):
+        soup = soup.find('body', recursive=True)
+        soup.hidden = True  # h/t https://groups.google.com/forum/#!topic/beautifulsoup/-VQdp2p0I8E
+    return soup.prettify(formatter=MinimalHTML5Formatter())
+
 
 if __name__ == '__main__':
     app.run(
