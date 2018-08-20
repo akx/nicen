@@ -5,6 +5,10 @@ import InputView from './InputView';
 import OutputView from './OutputView';
 import examples from './examples';
 
+const WIDTH_STORAGE_KEY = 'nicenWidth';
+const HANDLER_STORAGE_KEY = 'nicenHandler';
+
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +17,7 @@ export default class App extends React.Component {
       handler: null,
       handlers: null,
       result: null,
-      width: 120,
+      width: parseInt(localStorage.getItem(WIDTH_STORAGE_KEY), 10) || 120,
       hasCustomContent: false,
     };
   }
@@ -23,7 +27,11 @@ export default class App extends React.Component {
       .then(res => res.json())
       .then(handlers => {
         this.setState({ handlers }, () => {
-          const handler = handlers.find(h => h.name === 'black' && h.language === 'python');
+          const lastUsedHandler = localStorage.getItem(HANDLER_STORAGE_KEY);
+          const handler = (
+            handlers.find(h => h.name === lastUsedHandler) ||
+            handlers.find(h => h.name === 'black' && h.language === 'python')
+          );
           this.onChange('handler', handler);
         });
       })
@@ -62,13 +70,16 @@ export default class App extends React.Component {
         break;
       case 'width':
         this.setState({ width: value });
+        localStorage.setItem(WIDTH_STORAGE_KEY, value);
         break;
-      case 'handler':
+      case 'handler': {
         const handler = value;
         const { hasCustomContent } = this.state;
         let { content } = this.state;
         content = (!hasCustomContent ? examples[handler.language] : null) || content;
         this.setState({ handler, content });
+        localStorage.setItem(HANDLER_STORAGE_KEY, handler.name);
+      }
         break;
       default:
     }
