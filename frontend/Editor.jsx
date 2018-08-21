@@ -11,6 +11,8 @@ import(/* webpackChunkName: "codemirror" */'./CodeMirror').then((module) => {
 function getCodeMirrorModeForHandler(handler) {
   if (handler) {
     switch (handler.language) {
+      case 'html':
+        return 'htmlmixed';
       case 'c':
       case 'csharp':
       case 'graphql': // At least we get colored braces

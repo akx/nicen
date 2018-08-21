@@ -4,6 +4,7 @@ import 'codemirror/theme/material.css';
 
 require('codemirror/mode/clike/clike');
 require('codemirror/mode/css/css');
+require('codemirror/mode/htmlmixed/htmlmixed');
 require('codemirror/mode/jsx/jsx');
 require('codemirror/mode/markdown/markdown');
 require('codemirror/mode/php/php');
