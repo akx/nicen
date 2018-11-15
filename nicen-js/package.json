@@ -4,6 +4,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "prettier": "^1.15.2",
+    "prettier-plugin-java": "^0.0.10",
     "sql-formatter": "^2.3.2",
     "strip-ansi": "^5.0.0"
   },

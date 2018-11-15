@@ -144,12 +144,41 @@ const EXAMPLE_HTML = `
 </ul>
 `;
 
+const EXAMPLE_JAVA = `
+package de.blau.refactormycode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UglyPoker {
+	public boolean doCompareHC(String p1, String p2, String p3, String p4, String p5) {
+		String hc = "s02";
+		List<String> o = new ArrayList<String>();
+		o.add(p1);		o.add(p2);	o.add(p3);o.add(p4);	o.add(p5);
+m.add(card1);		m.add(card2);		m.add(card3);
+m.add(card4);		m.add(card5);
+
+for (int i = 0; i < o.size();i++) {			String mc = m.get(i);
+  for (int j = 0; j < o.size(); j++) {
+    String oc = m.get(j);
+    if (Integer.valueOf(oc.substring(1)) > Integer.valueOf(mc.substring(1))) {					if (Integer.valueOf(oc.substring(1)) > Integer.valueOf(hc.substring(1))) {
+        hc = oc;
+      }
+    } else {					if (Integer.valueOf(mc.substring(1)) > Integer.valueOf(hc.substring(1))) {
+        hc = mc;
+      }
+    }			}		}return m.contains(hc);
+	}
+}
+`;
+
 export default {
   c: EXAMPLE_C,
   csharp: EXAMPLE_CSHARP,
   css: EXAMPLE_CSS,
   graphql: EXAMPLE_GRAPHQL,
   html: EXAMPLE_HTML,
+  java: EXAMPLE_JAVA,
   javascript: EXAMPLE_JAVASCRIPT,
   json: EXAMPLE_JSON,
   markdown: EXAMPLE_MARKDOWN,

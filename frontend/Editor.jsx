@@ -16,6 +16,7 @@ function getCodeMirrorModeForHandler(handler) {
       case 'c':
       case 'csharp':
       case 'graphql': // At least we get colored braces
+      case 'java':
         return 'clike';
       case 'javascript':
       case 'json':

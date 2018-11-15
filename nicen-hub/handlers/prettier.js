@@ -29,4 +29,5 @@ module.exports = [
   prettierMode('graphql'),
   prettierMode('markdown'),
   prettierMode('json'),
+  prettierMode('java'),
 ];
