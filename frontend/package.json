@@ -1,13 +1,13 @@
 {
   "dependencies": {
-    "@babel/core": ">=7.0.0-beta.50",
-    "codemirror": "^5.39.2",
-    "emotion": "^9.2.6",
-    "poi": "^10.2.9",
-    "react": "^16.4.1",
+    "@babel/core": "^7.1.6",
+    "codemirror": "^5.41.0",
+    "emotion": "^9.2.12",
+    "poi": "^10.2.10",
+    "react": "^16.6.3",
     "react-codemirror2": "^5.1.0",
-    "react-dom": "^16.4.1",
-    "react-emotion": "^9.2.6",
+    "react-dom": "^16.6.3",
+    "react-emotion": "^9.2.12",
     "reflexbox": "^3.0.1"
   },
   "scripts": {
@@ -18,13 +18,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^8.2.6",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.9.1",
-    "prettier": "^1.13.7"
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.15.2"
   },
   "prettier": {
     "printWidth": 100,
