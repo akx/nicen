@@ -6,8 +6,8 @@ const config = require('./config');
 
 const app = express();
 
-app.use(body.json());
-app.use(body.urlencoded({extended: true}));
+app.use(body.json({limit: '200mb'}));
+app.use(body.urlencoded({extended: true, limit: '200mb'}));
 app.use(multer().array());
 app.use('/', express.static('public', {index: 'index.html'}));
 app.use('/', express.static('spec'));
