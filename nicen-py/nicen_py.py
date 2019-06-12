@@ -46,9 +46,11 @@ def blacken(code, width):
     try:
         return black.format_file_contents(
             code,
-            line_length=width,
             fast=False,
-            mode=black.FileMode.AUTO_DETECT,
+            mode=black.FileMode(
+                line_length=width,
+                target_versions=set(),
+            ),
         )
     except black.NothingChanged:
         return code
