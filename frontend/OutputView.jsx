@@ -1,6 +1,6 @@
 import React from 'react';
 import Editor from './Editor';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 const OutputSection = styled('section')({
   flex: 1,
@@ -32,7 +32,9 @@ const OutputView = ({ result, handler }) => {
   }
   return (
     <OutputSection id="output">
-      <MessageBar id="message" className={isError ? 'error' : undefined}>{message}</MessageBar>
+      <MessageBar id="message" className={isError ? 'error' : undefined}>
+        {message}
+      </MessageBar>
       <Editor code={result.content} handler={handler} />
     </OutputSection>
   );

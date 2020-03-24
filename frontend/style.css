@@ -13,7 +13,12 @@ body {
   flex-direction: column;
   background: #3a3c3a;
   color: #c8e1de
+}
 
+#app {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 a {

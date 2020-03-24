@@ -8,7 +8,6 @@ import examples from './examples';
 const WIDTH_STORAGE_KEY = 'nicenWidth';
 const HANDLER_STORAGE_KEY = 'nicenHandler';
 
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,24 +23,23 @@ export default class App extends React.Component {
 
   componentDidMount() {
     fetch('/handlers', { method: 'GET' })
-      .then(res => res.json())
-      .then(handlers => {
+      .then((res) => res.json())
+      .then((handlers) => {
         this.setState({ handlers }, () => {
           const lastUsedHandler = localStorage.getItem(HANDLER_STORAGE_KEY);
-          const handler = (
-            handlers.find(h => h.name === lastUsedHandler) ||
-            handlers.find(h => h.name === 'black' && h.language === 'python')
-          );
+          const handler =
+            handlers.find((h) => h.name === lastUsedHandler) ||
+            handlers.find((h) => h.name === 'black' && h.language === 'python');
           this.onChange('handler', handler);
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         alert('Failed to load handler list. Try again soon.');
       });
   }
 
-  post = event => {
+  post = (event) => {
     const { content, handler, width } = this.state;
     fetch('/', {
       method: 'POST',
@@ -55,8 +53,8 @@ export default class App extends React.Component {
         'content-type': 'application/json',
       },
     })
-      .then(resp => resp.json())
-      .then(result => {
+      .then((resp) => resp.json())
+      .then((result) => {
         this.setState({ result });
       });
     event.preventDefault();
@@ -66,20 +64,21 @@ export default class App extends React.Component {
   onChange = (prop, value) => {
     switch (prop) {
       case 'code':
-        this.setState({ content: value, hasCustomContent: (value.trim() !== '') });
+        this.setState({ content: value, hasCustomContent: value.trim() !== '' });
         break;
       case 'width':
         this.setState({ width: value });
         localStorage.setItem(WIDTH_STORAGE_KEY, value);
         break;
-      case 'handler': {
-        const handler = value;
-        const { hasCustomContent } = this.state;
-        let { content } = this.state;
-        content = (!hasCustomContent ? examples[handler.language] : null) || content;
-        this.setState({ handler, content });
-        localStorage.setItem(HANDLER_STORAGE_KEY, handler.name);
-      }
+      case 'handler':
+        {
+          const handler = value;
+          const { hasCustomContent } = this.state;
+          let { content } = this.state;
+          content = (!hasCustomContent ? examples[handler.language] : null) || content;
+          this.setState({ handler, content });
+          localStorage.setItem(HANDLER_STORAGE_KEY, handler.name);
+        }
         break;
       default:
     }

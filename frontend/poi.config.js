@@ -23,22 +23,23 @@ class StatsJSONPlugin {
   }
 }
 
-module.exports = (args) => {
-  return ({
+module.exports = (args) => ({
+  output: {
     html: {
       title: 'Nicen',
-      description: 'Nicen – makes your {C,C#,CSS,GraphQL,HTML,JavaScript,JSON,Markdown,PHP,Python,Rust,SQL,TypeScript,XML} code look nicer.',
+      description:
+          'Nicen – makes your {C,C#,CSS,GraphQL,HTML,JavaScript,JSON,Markdown,PHP,Python,Rust,SQL,TypeScript,XML} code look nicer.',
     },
-    devServer: {
-      proxy: {
-        '/': 'http://localhost:8042',
-      },
+  },
+  devServer: {
+    proxy: {
+      '/': 'http://localhost:8042',
     },
-    configureWebpack(config, context) {
-      if (args.stats) {
-        console.log('Enabling stats writing to stats.json');
-        config.plugins.push(new StatsJSONPlugin('stats.json'));
-      }
-    },
-  });
-};
+  },
+  configureWebpack(config) {
+    if (args.stats) {
+      console.log('Enabling stats writing to stats.json');
+      config.plugins.push(new StatsJSONPlugin('stats.json'));
+    }
+  },
+});

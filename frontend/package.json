@@ -1,30 +1,32 @@
 {
   "dependencies": {
-    "@babel/core": "^7.1.6",
-    "codemirror": "^5.41.0",
-    "emotion": "^9.2.12",
-    "poi": "^10.2.10",
-    "react": "^16.6.3",
-    "react-codemirror2": "^5.1.0",
-    "react-dom": "^16.6.3",
-    "react-emotion": "^9.2.12",
-    "reflexbox": "^3.0.1"
+    "@babel/core": "^7.9.0",
+    "@emotion/core": "^10.0.28",
+    "@emotion/css": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
+    "codemirror": "^5.52.2",
+    "poi": "^12.7.5",
+    "react": "^16.13.1",
+    "react-codemirror2": "^7.1.0",
+    "react-dom": "^16.13.1",
+    "reflexbox": "^4.0.6"
   },
   "scripts": {
-    "build": "poi build --no-clear-console",
-    "dev": "poi --no-clear-console",
+    "build": "poi --no-clear-console --production",
+    "dev": "poi --serve --no-clear-console",
     "lint": "eslint --ext .jsx --ext .js .",
     "prettier": "prettier '*.js*' --write"
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.15.2"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "prettier": "^2.0.2"
   },
   "prettier": {
     "printWidth": 100,

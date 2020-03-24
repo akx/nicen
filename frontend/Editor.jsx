@@ -1,9 +1,10 @@
-import { css } from 'react-emotion';
 import React, { Component } from 'react';
+import styled from '@emotion/styled';
+import { ClassNames } from '@emotion/core';
 
 let CodeMirror = null;
 const editorComponentLoadListeners = new Set();
-import(/* webpackChunkName: "codemirror" */'./CodeMirror').then((module) => {
+import(/* webpackChunkName: "codemirror" */ './CodeMirror').then((module) => {
   CodeMirror = module.default;
   editorComponentLoadListeners.forEach((fn) => fn());
 });
@@ -29,7 +30,7 @@ function getCodeMirrorModeForHandler(handler) {
   return undefined;
 }
 
-const codeMirrorCss = css({
+const codeMirrorCss = {
   display: 'block',
   flex: 1,
   position: 'relative',
@@ -43,9 +44,9 @@ const codeMirrorCss = css({
     right: 0,
     height: '100%',
   },
-});
+};
 
-const fallbackTextareaCss = css({
+const FallbackTextarea = styled('textarea')({
   display: 'block',
   flex: 1,
   background: 'transparent',
@@ -71,8 +72,7 @@ class Editor extends Component {
     const { handler, code, onChange } = this.props;
     if (!CodeMirror) {
       return (
-        <textarea
-          className={fallbackTextareaCss}
+        <FallbackTextarea
           value={code}
           onChange={(event) => {
             onChange(event.target.value);
@@ -81,18 +81,22 @@ class Editor extends Component {
       );
     }
     return (
-      <CodeMirror
-        value={code}
-        className={codeMirrorCss}
-        options={{
-          mode: getCodeMirrorModeForHandler(handler),
-          theme: 'material',
-          lineNumbers: true,
-        }}
-        onBeforeChange={(editor, data, value) => {
-          onChange(value);
-        }}
-      />
+      <ClassNames>
+        {({ css }) => (
+          <CodeMirror
+            value={code}
+            className={css(codeMirrorCss)}
+            options={{
+              mode: getCodeMirrorModeForHandler(handler),
+              theme: 'material',
+              lineNumbers: true,
+            }}
+            onBeforeChange={(editor, data, value) => {
+              onChange(value);
+            }}
+          />
+        )}
+      </ClassNames>
     );
   }
 }

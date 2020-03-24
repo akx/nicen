@@ -1,8 +1,6 @@
 import React from 'react';
-import styled from 'react-emotion';
-import { Flex } from 'reflexbox';
+import styled from '@emotion/styled';
 import Editor from './Editor';
-
 
 const InputViewForm = styled('form')({
   flex: 1,
@@ -48,12 +46,10 @@ const HandlerListItem = styled('li')({
 
 const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
   <InputViewForm method="post" onSubmit={onSubmit}>
-    <Flex auto>
+    <div style={{ display: 'flex', flex: 1 }}>
       <Controls>
-        <Flex>
-          <Flex auto style={{ padding: '.5em' }}>
-            Width
-          </Flex>
+        <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', flex: 1, padding: '.5em' }}>Width</div>
           <input
             type="number"
             title="print width"
@@ -61,11 +57,11 @@ const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
             value={width}
             min={0}
             style={{ width: '5em' }}
-            onChange={event => onChange('width', parseInt(event.target.value, 10))}
+            onChange={(event) => onChange('width', parseInt(event.target.value, 10))}
           />
-        </Flex>
+        </div>
         <HandlersList>
-          {handlers.map(h => (
+          {handlers.map((h) => (
             <HandlerListItem
               key={h.name}
               className={handler && h.name === handler.name ? 'active' : ''}
@@ -78,8 +74,8 @@ const InputView = ({ code, handlers, handler, width, onSubmit, onChange }) => (
           ))}
         </HandlersList>
       </Controls>
-      <Editor code={code} onChange={newCode => onChange('code', newCode)} handler={handler} />
-    </Flex>
+      <Editor code={code} onChange={(newCode) => onChange('code', newCode)} handler={handler} />
+    </div>
     <button type="submit">Nicen my code!</button>
   </InputViewForm>
 );
