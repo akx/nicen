@@ -1,6 +1,7 @@
 **/dist
 **/node_modules
 .git
+/ops
 Dockerfile
 nicen-dotnet/bin
 nicen-dotnet/obj

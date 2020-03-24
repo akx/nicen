@@ -1,11 +1,13 @@
 FROM archlinux/base:latest as dotnetbuild
-RUN pacman -Sy --noconfirm dotnet-sdk
+RUN pacman -Sy --noconfirm
+RUN pacman -S --noconfirm dotnet-sdk
 
 ADD ./nicen-dotnet /app/nicen-dotnet
 RUN cd /app/nicen-dotnet && dotnet restore && dotnet build && dotnet publish -o /app/nicen-dotnet-built
 
 FROM archlinux/base:latest
-RUN pacman -Sy --noconfirm nodejs rust python3 clang yarn python-pip dotnet-runtime libxml2 glibc git
+RUN pacman -Sy --noconfirm
+RUN pacman -S --noconfirm nodejs rust python3 clang yarn python-pip dotnet-runtime libxml2 glibc git
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 RUN pip3 install --no-cache circus gunicorn
 
