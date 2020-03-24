@@ -5,20 +5,23 @@
 #    pip-compile requirements.in
 #
 appdirs==1.4.3            # via black
-attrs==19.1.0             # via black
-autopep8==1.4.4
-beautifulsoup4==4.7.1
-black==19.3b0
-click==7.0                # via black, flask
-envparse==0.2.0
-flask==1.0.3
-html5lib==1.0.1
+attrs==19.3.0             # via black
+autopep8==1.5             # via -r requirements.in
+beautifulsoup4==4.8.2     # via -r requirements.in
+black==19.10b0            # via -r requirements.in
+click==7.1.1              # via black, flask
+envparse==0.2.0           # via -r requirements.in
+flask==1.1.1              # via -r requirements.in
+html5lib==1.0.1           # via -r requirements.in
 itsdangerous==1.1.0       # via flask
-jinja2==2.10.1            # via flask
+jinja2==2.11.1            # via flask
 markupsafe==1.1.1         # via jinja2
+pathspec==0.7.0           # via black
 pycodestyle==2.5.0        # via autopep8
-six==1.12.0               # via html5lib
-soupsieve==1.9.2          # via beautifulsoup4
+regex==2020.2.20          # via black
+six==1.14.0               # via html5lib
+soupsieve==2.0            # via beautifulsoup4
 toml==0.10.0              # via black
+typed-ast==1.4.1          # via black
 webencodings==0.5.1       # via html5lib
-werkzeug==0.15.4          # via flask
+werkzeug==1.0.0           # via flask

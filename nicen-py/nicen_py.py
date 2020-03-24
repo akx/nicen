@@ -1,6 +1,7 @@
 import traceback
 
-from bs4.element import MinimalHTMLFormatter
+from bs4.dammit import EntitySubstitution
+from bs4.formatter import HTMLFormatter
 from envparse import Env
 from flask import Flask, Response, request
 import black
@@ -15,9 +16,10 @@ env.read_envfile()
 
 app = Flask(__name__)
 
-
-class MinimalHTML5Formatter(MinimalHTMLFormatter):
-    void_element_close_prefix = None
+bs4_formatter = HTMLFormatter(
+    entity_substitution=EntitySubstitution.substitute_xml,
+    void_element_close_prefix=True,
+)
 
 
 def as_formatter(func):
@@ -72,7 +74,7 @@ def bs4ify(code, width):
     if not any(p in code.lower() for p in ('<html', '<head', '<body')):
         soup = soup.find('body', recursive=True)
         soup.hidden = True  # h/t https://groups.google.com/forum/#!topic/beautifulsoup/-VQdp2p0I8E
-    return soup.prettify(formatter=MinimalHTML5Formatter())
+    return soup.prettify(formatter=bs4_formatter)
 
 
 if __name__ == '__main__':
