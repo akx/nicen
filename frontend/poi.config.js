@@ -28,7 +28,7 @@ module.exports = (args) => ({
     html: {
       title: 'Nicen',
       description:
-          'Nicen – makes your {C,C#,CSS,GraphQL,HTML,JavaScript,JSON,Markdown,PHP,Python,Rust,SQL,TypeScript,XML} code look nicer.',
+        'Nicen – makes your {C,C#,CSS,GraphQL,HTML,JavaScript,JSON,Markdown,PHP,Python,Rust,SQL,TypeScript,XML} code look nicer.',
     },
   },
   devServer: {

@@ -88,7 +88,7 @@ export default class App extends React.Component {
     const { handler, content, width, result, handlers } = this.state;
     if (handlers === null) return null;
     return (
-      <React.Fragment>
+      <>
         <nav>
           <img src={logoSvg} alt="Nicen" />
           <div className="about">
@@ -108,7 +108,7 @@ export default class App extends React.Component {
           />
           {result ? <OutputView result={result} handler={handler} /> : null}
         </main>
-      </React.Fragment>
+      </>
     );
   }
 }

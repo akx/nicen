@@ -1,6 +1,8 @@
+/* eslint-env browser */
 import React from 'react';
-import Editor from './Editor';
 import styled from '@emotion/styled';
+import Editor from './Editor';
+import { delay } from './utils';
 
 const OutputSection = styled('section')({
   flex: 1,
@@ -20,6 +22,10 @@ const MessageBar = styled('div')({
 });
 
 const OutputView = ({ result, handler }) => {
+  const [isCopied, setIsCopied] = React.useState(false);
+  React.useEffect(() => {
+    setIsCopied(false);
+  }, [result.content]);
   let isError = false;
   let message;
   if (result) {
@@ -36,6 +42,19 @@ const OutputView = ({ result, handler }) => {
         {message}
       </MessageBar>
       <Editor code={result.content} handler={handler} />
+
+      <button
+        type="button"
+        onClick={() =>
+          navigator.clipboard
+            .writeText(result.content)
+            .then(() => setIsCopied(true))
+            .then(() => delay(500))
+            .then(() => setIsCopied(false))
+        }
+      >
+        {isCopied ? 'Copied!' : 'Copy that code!'}
+      </button>
     </OutputSection>
   );
 };

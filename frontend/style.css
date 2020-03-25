@@ -63,7 +63,10 @@ button {
   display: block;
   height: 4.5em;
   background: #c3dbb4;
-  border-bottom: 4px solid #aaccb1;
+  border-width: 1px;
+  border-bottom-width: 8px;
+  border-style: solid;
+  border-color: #93b299;
   color: #111;
 }
 
