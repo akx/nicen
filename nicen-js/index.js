@@ -16,7 +16,7 @@ app.post('/prettier', (req, res) => {
   try {
     const formatted = prettier.format(code, {
       semi: true,
-      parser: (req.query.parser || 'babylon'),
+      parser: (req.query.parser || 'babel'),
       printWidth: parseInt(req.query.width || '120', 10),
       trailingComma: 'all',
     });
