@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   background: #3a3c3a;
-  color: #c8e1de
+  color: #c8e1de;
 }
 
 #app {
@@ -25,15 +25,18 @@ a {
   color: #188075;
 }
 
-body, input, select, button, textarea {
-  font: 10pt "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #c8e1de
+body,
+input,
+select,
+button,
+textarea {
+  font: 10pt 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #c8e1de;
 }
 
 input {
   background: none;
   border: 1px solid #68b3af;
-
 }
 
 nav {
@@ -51,7 +54,7 @@ nav img {
 
 nav .about {
   float: right;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 main {
