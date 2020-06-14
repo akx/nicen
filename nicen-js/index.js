@@ -5,9 +5,7 @@ const sqlFormatter = require('sql-formatter');
 const stripAnsi = require('strip-ansi');
 const util = require('util');
 
-
-const config = require('../nicen-hub/config');
-
+const port = parseInt(process.env.NICEN_JS_PORT, 10) || 62080;
 const app = express();
 
 app.use(body.text());
@@ -36,7 +34,7 @@ app.post('/sql-formatter', (req, res) => {
   }
 });
 
-app.listen(config.NICEN_JS_PORT, config.NICEN_JS_HOST, (err) => {
+app.listen(port, '0', (err) => {
   if (err) throw err;
-  console.log(`[nicen-js] listening on ${config.NICEN_JS_HOST}:${config.NICEN_JS_PORT}`);
+  console.log(`[nicen-js] listening on port ${port}`);
 });

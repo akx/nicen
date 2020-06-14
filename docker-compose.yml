@@ -1,0 +1,32 @@
+version: '3'
+services:
+  nicen-hub:
+    build:
+      context: .
+      dockerfile: ./nicen-hub/Dockerfile
+    ports:
+      - "8042:8042"
+    environment:
+      NICEN_DOTNET_HOST: nicen-dotnet
+      NICEN_JS_HOST: nicen-js
+      NICEN_NATIVE_HOST: nicen-native
+      NICEN_PY_HOST: nicen-py
+#    volumes:
+#      - ./nicen-hub:/app:ro
+#      - ./frontend/dist:/app/public:ro
+  nicen-py:
+    build: ./nicen-py
+    ports:
+      - "42080:42080"
+  nicen-dotnet:
+    build: ./nicen-dotnet
+    ports:
+      - "31095:31095"
+  nicen-js:
+    build: ./nicen-js
+    ports:
+      - "62080:62080"
+  nicen-native:
+    build: ./nicen-native
+    ports:
+      - "62090:62090"

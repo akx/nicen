@@ -1,18 +1,14 @@
-const pipe = require('../util/pipe');
+const consultLanguageServer = require('../util/consultLanguageServer');
+const {NICEN_NATIVE_URL} = require('../config');
 
 module.exports = {
   language: 'xml',
   name: 'xmllint',
   async process({ content, width }) {
-    // TODO: xmllint does not honor width
-    const resp = await pipe('/usr/bin/env', ['xmllint', '--format', '--nonet', '--recover', '-'], content);
-    if (resp.code !== 0) {
-      return {
-        error: resp.stderr.toString(),
-      };
-    }
-    return {
-      content: resp.stdout.toString(),
-    };
-  }
+    return await consultLanguageServer(
+      `${NICEN_NATIVE_URL}xmllint`,
+      content,
+      { width },
+    );
+  },
 };
