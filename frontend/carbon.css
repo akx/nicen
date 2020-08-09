@@ -1,4 +1,11 @@
 #carbonads {
+  position: fixed;
+  right: 10px;
+  bottom: 75px;
+  z-index: 9001;
+}
+
+#carbonads {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
   Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
