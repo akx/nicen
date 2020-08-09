@@ -1,4 +1,3 @@
-/* eslint-env browser */
 import React from 'react';
 import styled from '@emotion/styled';
 import Editor from './Editor';

@@ -15,7 +15,7 @@
     "build": "poi --no-clear-console --production",
     "dev": "poi --serve --no-clear-console",
     "lint": "eslint --ext .jsx --ext .js .",
-    "prettier": "prettier '*.js*' --write"
+    "prettify": "prettier '*.js*' --write"
   },
   "license": "MIT",
   "devDependencies": {
