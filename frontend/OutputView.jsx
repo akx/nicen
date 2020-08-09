@@ -1,4 +1,3 @@
-/* eslint-env browser */
 import React from 'react';
 import styled from '@emotion/styled';
 import Editor from './Editor';
@@ -45,11 +44,13 @@ const OutputView = ({ result, handler }) => {
 
       <button
         type="button"
-        onClick={() => navigator.clipboard
-          .writeText(result.content)
-          .then(() => setIsCopied(true))
-          .then(() => delay(500))
-          .then(() => setIsCopied(false))}
+        onClick={() =>
+          navigator.clipboard
+            .writeText(result.content)
+            .then(() => setIsCopied(true))
+            .then(() => delay(500))
+            .then(() => setIsCopied(false))
+        }
       >
         {isCopied ? 'Copied!' : 'Copy that code!'}
       </button>

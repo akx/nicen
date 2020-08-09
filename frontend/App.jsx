@@ -1,4 +1,3 @@
-/* eslint-env browser */
 import React from 'react';
 import logoSvg from '../assets/logo.svg';
 import InputView from './InputView';
@@ -27,8 +26,9 @@ export default class App extends React.Component {
       .then((handlers) => {
         this.setState({ handlers }, () => {
           const lastUsedHandler = localStorage.getItem(HANDLER_STORAGE_KEY);
-          const handler = handlers.find((h) => h.name === lastUsedHandler)
-            || handlers.find((h) => h.name === 'black' && h.language === 'python');
+          const handler =
+            handlers.find((h) => h.name === lastUsedHandler) ||
+            handlers.find((h) => h.name === 'black' && h.language === 'python');
           this.onChange('handler', handler);
         });
       })
