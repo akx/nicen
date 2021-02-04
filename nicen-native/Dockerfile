@@ -5,7 +5,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf -o ./rustup-init https://static.rust-la
     ./rustup-init -y --profile minimal -c rustfmt && \
     rm ./rustup-init && \
     ln -s /root/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustfmt /usr/local/bin
-ENV NICEN_JS_PORT 62080
+ENV NICEN_NATIVE_PORT 62090
 WORKDIR /app
 ADD package.json yarn.lock ./
 RUN yarn
