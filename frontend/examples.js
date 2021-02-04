@@ -172,6 +172,25 @@ for (int i = 0; i < o.size();i++) {			String mc = m.get(i);
 }
 `;
 
+const EXAMPLE_RUBY = `
+#date: 03/24/2005
+#title: Pretty numbers
+#author: Vincent Foley
+#email: vfoley at gmail dot com
+        d=[30644250780,9003106878,
+    30636278846,66641217692,4501790980,
+ 671_24_603036,131_61973916,66_606629_920,
+   30642677916,30643069058];a,s=[],$*[0]
+      s.each_byte{|b|a<<("%036b"%d[b.
+         chr.to_i]).scan(/\\d{6}/)}
+          a.transpose.each{ |a|
+            a.join.each_byte{\\
+             |i|print i==49?\\
+               ($*[1]||"#")\\
+                 :32.chr}
+                   puts
+                    }`;
+
 export default {
   c: EXAMPLE_C,
   csharp: EXAMPLE_CSHARP,
@@ -184,6 +203,7 @@ export default {
   markdown: EXAMPLE_MARKDOWN,
   php: EXAMPLE_PHP,
   python: EXAMPLE_PYTHON,
+  ruby: EXAMPLE_RUBY,
   rust: EXAMPLE_RUST,
   sql: EXAMPLE_SQL,
   typescript: EXAMPLE_TYPESCRIPT,

@@ -9,6 +9,7 @@ require('codemirror/mode/jsx/jsx');
 require('codemirror/mode/markdown/markdown');
 require('codemirror/mode/php/php');
 require('codemirror/mode/python/python');
+require('codemirror/mode/ruby/ruby');
 require('codemirror/mode/rust/rust');
 require('codemirror/mode/sql/sql');
 

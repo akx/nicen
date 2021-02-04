@@ -30,4 +30,5 @@ module.exports = [
   prettierMode('markdown'),
   prettierMode('json'),
   prettierMode('java'),
+  prettierMode('ruby'),
 ];
