@@ -32,8 +32,10 @@ itsdangerous==1.1.0
     # via flask
 jinja2==2.11.3
     # via flask
-markupsafe==1.1.1
-    # via jinja2
+markupsafe==2.1.5
+    # via
+    #   jinja2
+    #   werkzeug
 mypy-extensions==0.4.3
     # via black
 packaging==20.9
@@ -48,12 +50,12 @@ pycodestyle==2.6.0
     # via autopep8
 pyparsing==2.4.7
     # via packaging
-pytest-cov==2.11.1
-    # via -r requirements-dev.in
 pytest==6.2.2
     # via
     #   -r requirements-dev.in
     #   pytest-cov
+pytest-cov==2.11.1
+    # via -r requirements-dev.in
 regex==2020.11.13
     # via black
 six==1.15.0
@@ -71,5 +73,5 @@ typing-extensions==3.7.4.3
     # via black
 webencodings==0.5.1
     # via html5lib
-werkzeug==1.0.1
+werkzeug==3.0.3
     # via flask
